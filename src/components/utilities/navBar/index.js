@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import InputSearch from "./InputSearch.js"
+
 
 const Navbar = () => {
-  const [search, setSearch] = useState("");
-
+  
   return (
     <nav className="bg-transparent backdrop-blur-md shadow-md fixed w-full h-16 z-10 flex items-center">
       <div className="container mx-auto px-6 flex justify-between items-center">
@@ -16,13 +16,7 @@ const Navbar = () => {
 
         {/* Search Bar */}
         <div className="w-1/2 md:w-1/3">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+          <InputSearch /> 
         </div>
       </div>
     </nav>
