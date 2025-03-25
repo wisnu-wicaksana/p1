@@ -32,7 +32,7 @@ const InputSearch = () => {
             />
             <button 
                 className="absolute top-1/2 right-3 -translate-y-1/2"
-                onClick={handleSearch} // ✅ Menangkap klik tombol
+                onClick={handleSearch} 
             >
                 <Search className="size-4 sm:size-5 md:size-5 lg:size-7" />
             </button>

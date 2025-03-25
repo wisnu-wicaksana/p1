@@ -8,7 +8,7 @@ const page = async () => {
   return (
     <>
       <section>
-      <Header taitel={"SEMUA YANG PALING POPULER"} lnktaitel={"lihat semua"} linkhref={"/populer"} /> 
+      <Header title={"SEMUA YANG PALING POPULER"} linktitle={"kembali"} linkhref={"/"} /> 
       <List api = {topAnime}/>
       </section>
 
