@@ -1,10 +1,9 @@
 import List from "../components/List";
 import Header from "@/components/List/Header";
+import { getApi } from "./Libs/ApiLips";
 
 const page = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=10`);
-  const topAnime = await response.json();
-  
+  const topAnime = await getApi ("top/anime","limit=10")
   return (
     <>
       <section>
