@@ -2,7 +2,7 @@ import List from "@/components/List";
 import Header from "@/components/List/Header";
 
 const Page = async ({ params }) => {
-    const keyword = params.keyword.replace(/%20/g, " ");
+    const keyword = params.keyword.replace(/%20/, " ");
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${keyword}`);
         if (!response.ok) throw new Error("Gagal mengambil data"); 
@@ -10,7 +10,7 @@ const Page = async ({ params }) => {
 
         return (
             <section>
-                <Header title={`Pencarian untuk "${keyword}"`} />
+                <Header title={`Pencarian untuk "${keyword}"`} linktitle={"kembali"} linkhref={"/"}/>
                 <List api={searchAnime} />
             </section>
         );

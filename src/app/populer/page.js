@@ -1,19 +1,33 @@
-import List from "@/components/List";
-import Header from "@/components/List/Header";
+"use client";
 
-const page = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime`);
-  const topAnime = await response.json();
-  
+import List from "@/components/List";
+import HeaderMenu from "@/components/utilities/HeadrMenu";
+import Pagination from "@/components/utilities/Pagination";
+import { useState, useEffect, useCallback } from "react";
+
+const Page = () => {
+  const [page, setPage] = useState(1);
+  const [TopAnime, setTopAnime] = useState([]);
+
+  const FacingData = useCallback(async () => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?page=${page}` );
+    const data = await response.json();
+    setTopAnime(data);
+  }, [page]); 
+  useEffect(() => {
+    FacingData();
+  }, [FacingData]); 
+
   return (
     <>
-      <section>
-      <Header title={"SEMUA YANG PALING POPULER"} linktitle={"kembali"} linkhref={"/"} /> 
-      <List api = {topAnime}/>
-      </section>
+      <section >
 
-    </>
+        <HeaderMenu title={`SEMUA YANG PALING POPULER #${page}` }/>
+        <List api={TopAnime} />
+        <Pagination page={page} LastPage={TopAnime?.pagination?.last_visible_page} setPage={setPage} />
+      </section>
+    </> 
   );
 };
 
-export default page; 
+export default Page;
